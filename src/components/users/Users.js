@@ -14,10 +14,12 @@ const Users = () => {
     return (
         <div>
             <form onSubmit={handleSubmit(submit)}>
+                {(errors.name || errors.username || errors.email) && <span>ALL field is required</span>}
                 <input type='text' {...register('name',{required:true})}/>
-                {errors.name && <span>eroraaaa</span>}
                 <input type='text' {...register('username',{required:true})}/>
+                {/*{errors.username && <span>This fild is required</span>}*/}
                 <input type='text' {...register('email',{required:true})}/>
+                {/*{errors.email && <span>This fild is required</span>}*/}
                 <input type='submit' value={'Save'}/>
             </form>
         </div>
