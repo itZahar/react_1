@@ -4,8 +4,4 @@ let axiosInstance = axios.create({
     headers:{"Content-Type":"application/json; charset=UTF-8"}
 })
 const saveUser = (data) => axiosInstance.post('',{...data})
-
 export {saveUser}
-
-
-
