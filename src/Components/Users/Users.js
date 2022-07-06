@@ -20,7 +20,7 @@ export default function Users() {
         ,[])
     return (
         <div>
-            {user.id && <div> {user.id} {user.name}  {user.email} </div>}
+            {user.id && <h2> {user.id} {user.name}  {user.email} </h2>}
             {
                 users.map((user,index) => <User
                     item={user}
