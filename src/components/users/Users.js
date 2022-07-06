@@ -15,7 +15,7 @@ const Users = () => {
         <div>
             <form onSubmit={handleSubmit(submit)}>
                 <input type='text' {...register('name',{required:true})}/>
-                {errors.title && <span>eroraaaa</span>}
+                {errors.name && <span>eroraaaa</span>}
                 <input type='text' {...register('username',{required:true})}/>
                 <input type='text' {...register('email',{required:true})}/>
                 <input type='submit' value={'Save'}/>
