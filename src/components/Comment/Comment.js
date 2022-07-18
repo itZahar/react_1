@@ -1,16 +1,13 @@
 import React, {Component} from 'react';
-import {Posts} from "./components";
 
-
-class App extends Component {
-
+class Comment extends Component {
     render() {
         return (
             <div>
-            <Posts/>
+                
             </div>
         );
     }
 }
 
-export default App;
+export {Comment};

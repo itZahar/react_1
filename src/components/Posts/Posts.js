@@ -1,16 +1,17 @@
 import React, {Component} from 'react';
-import {Posts} from "./components";
+
+class Posts extends Component {
+    state = {posts : []}
 
 
-class App extends Component {
 
     render() {
         return (
             <div>
-            <Posts/>
+
             </div>
         );
     }
 }
 
-export default App;
+export {Posts};
