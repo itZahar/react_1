@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {getAlbums} from "../../services";
-import AlbumComponent from "./AlbumComponent";
+import AlbumComponent from "../Album/AlbumComponent";
 
 export default function AlbumsComponent() {
 

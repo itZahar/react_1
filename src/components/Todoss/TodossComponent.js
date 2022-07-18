@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 
 import {todosServices} from "../../services";
-import TodosComponent from "./TodosComponent";
+import TodosComponent from "../Todos/TodosComponent";
 
 export default function TodossComponent() {
     let [todoss,setTodos] = useState([])

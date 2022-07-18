@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {getPosts} from "../../services/posts.servisec";
 import {useParams} from "react-router-dom";
-import PostComponent from "./PostComponent";
+import PostComponent from "../Post/PostComponent";
 
 
 export default function PostsComponent() {

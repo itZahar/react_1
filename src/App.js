@@ -1,4 +1,4 @@
-import {Link, Route,Routes} from "react-router-dom";
+import {Route,Routes} from "react-router-dom";
 
 import HomePage from "./pages/HomePage";
 import LayoutPage from "./pages/LayoutPage";
@@ -6,18 +6,12 @@ import TodosPage from "./pages/TodosPage";
 import AlbumsPage from "./pages/AlbumsPage";
 import CommentsPage from "./pages/CommentsPage";
 import PostPage from "./pages/PostPage";
+import Header from "./components/Header/Header";
 
 const App = () => {
     return (
         <div>
-
-            <div>
-            <h2>Menu</h2>
-            <ul>
-                <li><Link to={'/'}>Home</Link></li>
-                <li><Link to={'/Layout'}>Layout</Link></li>
-            </ul>
-            </div>
+            <Header/>
             <div>
                 <Routes>
                     <Route path={'/'} element={<HomePage/>}/>
