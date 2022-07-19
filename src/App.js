@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Posts} from "./components";
+import {Comments, Posts} from "./components";
 
 
 class App extends Component {
@@ -8,6 +8,7 @@ class App extends Component {
         return (
             <div>
             <Posts/>
+                <Comments/>
             </div>
         );
     }
