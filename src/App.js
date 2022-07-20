@@ -1,2 +1,8 @@
+export default function App() {
+    return (
+        <div>
+        App
 
-export default App;
+        </div>
+    );
+}
