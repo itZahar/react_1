@@ -7,6 +7,7 @@ const App = () => {
         <CarForm/>
             <hr/>
         <Cars/>
+            <div id={'root'}></div>
         </div>
     );
 }

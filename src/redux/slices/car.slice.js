@@ -1,10 +1,11 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+
 import {carService} from "../../services";
 
 const initialState = {
+    cars:[],
     errors : null,
-    carForUpdate:null,
-    cars:[]
+    carForUpdate:null
 };
 
 const getAll = createAsyncThunk(
@@ -15,7 +16,7 @@ const getAll = createAsyncThunk(
             return data
         }
         catch (e){
-            return rejectWithValue(e.response.data)
+            return rejectWithValue(e.message)
         }
     }
 )
@@ -26,18 +27,29 @@ async ({id,car},{rejectWithValue})=>{
         const {data} = await carService.updateById(id,car);
         return data
     }catch (e){
-        return rejectWithValue(e.response.data)
+        return rejectWithValue(e.message)
     }
 }
 );
+const create = createAsyncThunk(
+    'carSlice/create',
+    async ({car},{rejectWithValue})=>{
+        try {
+            const {data} = await carService.create(car);
+            return data
+        }catch (e){
+            return rejectWithValue(e.response.data)
+        }
+    }
+)
 const deleteById = createAsyncThunk(
     'carSlice/deleteById',
-    async (id,{rejectWithValue})=>{
+    async ({id},{rejectWithValue})=>{
         try {
             await carService.deleteById(id)
             return id
         }catch (e){
-            return rejectWithValue(e.response.data)
+            return rejectWithValue(e.message)
         }
     }
 )
@@ -66,9 +78,18 @@ const carSlice = createSlice({
             const index = state.cars.findIndex(car => car.id === action.payload);
             state.cars.splice(index,1)
         })
+        .addCase(create.fulfilled,(state, action)=>{
+            state.cars.push(action.payload)
+        })
 
-        .addCase(getAll.rejected,(state, action) => {
-            state.errors = action.payload
+        .addDefaultCase((state, action)=>{
+            const [type] = action.type.split('/').splice(-1);
+            if (type === 'rejected'){
+                state.errors = action.payload
+            }
+            else {
+                state.errors = null
+            }
         })
 
 })
@@ -77,7 +98,8 @@ const carActions = {
     getAll,
     setCarForUpdate,
     updateById,
-    deleteById
+    deleteById,
+    create
 }
 
 export {

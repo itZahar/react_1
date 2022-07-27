@@ -12,8 +12,8 @@ const {id,model,year,price}= car
             <div>model:{model}</div>
             <div>year:{year}</div>
             <div>price:{price}</div>
-            <button onClick={()=>{dispatch(carActions.setCarForUpdate(car))}}>Update</button>
-            <button onClick={()=>{dispatch(carActions.deleteById(id))}}>Delete</button>
+            <button onClick={()=>dispatch(carActions.setCarForUpdate(car))}>Update</button>
+            <button onClick={()=>dispatch(carActions.deleteById({id}))}>Delete</button>
         </div>
     )
 }
