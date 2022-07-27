@@ -1,5 +1,6 @@
-import {carActions} from "../../redux";
 import {useDispatch} from "react-redux";
+
+import {carActions} from "../../redux";
 
 const Car = ({car}) => {
     const dispatch = useDispatch()
@@ -12,6 +13,7 @@ const {id,model,year,price}= car
             <div>year:{year}</div>
             <div>price:{price}</div>
             <button onClick={()=>{dispatch(carActions.setCarForUpdate(car))}}>Update</button>
+            <button onClick={()=>{dispatch(carActions.deleteById(id))}}>Delete</button>
         </div>
     )
 }
