@@ -5,19 +5,23 @@ import {Car} from "../Car/Car";
 import {carActions} from "../../redux";
 
 const Cars = () => {
+    const {cars} = useSelector(state => state.cars);
+    const dispatch = useDispatch();
 
-const {cars} = useSelector(state => state.cars);
+    useEffect(()=>{
+        dispatch(carActions.getAll())
+    },[dispatch]);
 
-const dispatch = useDispatch();
-useEffect(()=>{
-    dispatch(carActions.getAll())
-},[dispatch])
-    return (
+    return(
         <div>
-            {cars.map(car=> <Car car={car} key={car.id}/>)}
+            {
+                cars.map(car=><Car car={car} key={car.id} />)
+            }
         </div>
     )
 }
+
+
 export {
     Cars
 }
