@@ -21,7 +21,6 @@ const Cars = () => {
     )
 }
 
-
 export {
     Cars
 }
