@@ -14,7 +14,7 @@ const getAll = createAsyncThunk(
             const {data} = await carService.getAll();
             return data
         } catch (e){
-            rejectWithValue(e)
+            return rejectWithValue(e.response.data)
         }
     }
 )
@@ -26,7 +26,7 @@ const updateById = createAsyncThunk(
             return data
         }
         catch (e){
-            rejectWithValue(e)
+            return rejectWithValue(e.response.data)
         }
     }
 )
@@ -38,7 +38,7 @@ const create = createAsyncThunk(
             return data
         }
         catch (e){
-            rejectWithValue(e)
+            return rejectWithValue(e.response.data)
         }
     }
 )
@@ -50,7 +50,7 @@ const deleteById = createAsyncThunk(
             return id
         }
         catch (e){
-            rejectWithValue(e)
+            return rejectWithValue(e.response.data)
         }
     }
 )
@@ -80,8 +80,12 @@ const carSlice = createSlice({
                 const index = state.cars.findIndex(car=>car.id === action.payload)
                 state.cars.splice(index,1)
             })
-            .addCase(getAll.rejected,(state,action)=>{
-                state.errors = action.payload
+            .addDefaultCase((state, action)=>{
+                const [type] = action.type.split('/').splice(-1)
+                if (type === 'rejected'){
+                    state.errors = action.payload
+                }
+                else state.errors = null
             })
 
 
