@@ -2,6 +2,7 @@ import {useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 
+import './CarForm.css'
 import {carActions} from "../../redux";
 
 const CarForm = () => {
@@ -23,6 +24,9 @@ const CarForm = () => {
         else await dispatch(carActions.create({car:data}))
         reset()
     }
+if (typeof errors === 'string'){
+    document.getElementById('root').innerHTML = errors
+}
 
     return (
         <form onSubmit={handleSubmit(submit)}>
@@ -30,7 +34,13 @@ const CarForm = () => {
             <input type={"text"} placeholder={'price'}{...register('price')}/>
             <input type={"text"} placeholder={'year'}{...register('year')}/>
             <button type={'submit'}>{carForUpdate? 'Update':'Create'}</button>
-            {errors && {}}
+            {errors && typeof errors === 'object' && <div className={'errors'}>
+                <div>Model:{errors.model}</div>
+                <div>Price:{errors.price}</div>
+                <div>Year:{errors.year}</div>
+            </div>}
+
+
         </form>
     )
 }

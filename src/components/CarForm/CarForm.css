@@ -1,0 +1,13 @@
+.errors{
+    display: flex;
+}
+.errors>div{
+    min-width: 30%;
+    max-width: 30%;
+}
+form{
+    justify-content: space-between;
+}
+input{
+    min-width: 29%;
+}
